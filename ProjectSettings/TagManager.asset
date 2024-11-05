@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Shield
+  - Enemy
+  - StartPoint
+  - Coin
+  - Heal
+  - Ground
+  - WeakPoint
+  - Trap
+  - Fruit
+  - Ded
+  - TurnA
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Player
+  - 
+  - Enemy
+  - buff
+  - 
+  - FeetOrBonk
+  - Grounds
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Bg
+    uniqueID: 277052221
+    locked: 0
+  - name: Ground
+    uniqueID: 308951503
+    locked: 0
+  - name: Boss
+    uniqueID: 1169555883
+    locked: 0
+  - name: Player
+    uniqueID: 3665265069
+    locked: 0
+  - name: Object
+    uniqueID: 2756287349
+    locked: 0
+  - name: Window
+    uniqueID: 2015406331
+    locked: 0
