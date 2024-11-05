@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1538679947
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0049772a1acaf4a49b69bb504ffe2669, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,6 +105,7 @@ MonoBehaviour:
   test: 0
   test1: 0
   Destroyit: 1
+  Run: 1
 --- !u!50 &7947600562717562489
 Rigidbody2D:
   serializedVersion: 4
@@ -188,6 +189,10 @@ PrefabInstance:
     - target: {fileID: 4386981079613115983, guid: 249cde726347c16468e3242bf1afb9e8, type: 3}
       propertyPath: m_Name
       value: Trap (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386981079613115983, guid: 249cde726347c16468e3242bf1afb9e8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6612112376195028495, guid: 249cde726347c16468e3242bf1afb9e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -307,6 +312,10 @@ PrefabInstance:
     - target: {fileID: 4386981079613115983, guid: 249cde726347c16468e3242bf1afb9e8, type: 3}
       propertyPath: m_Name
       value: Trap
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386981079613115983, guid: 249cde726347c16468e3242bf1afb9e8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6612112376195028495, guid: 249cde726347c16468e3242bf1afb9e8, type: 3}
       propertyPath: m_LocalPosition.x

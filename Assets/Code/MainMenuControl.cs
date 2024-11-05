@@ -25,6 +25,8 @@ public class MainMenuControl : MonoBehaviour
     Vector2 targetPosition;
     bool Hited=false;
     [SerializeField] float A,B,C;
+
+    [SerializeField] AudioManager audioManager;
    
     
     void Start()
@@ -49,6 +51,7 @@ public class MainMenuControl : MonoBehaviour
     public void StartButton()
     {
         //gameObject.SetActive(false);
+        audioManager.PlayVfx(audioManager.ButtonBig);
         if(!Hited)
         {
             hPnMETTER.shield+=coin.InfoToSave.UpdateShieldsLV;
@@ -66,6 +69,8 @@ public class MainMenuControl : MonoBehaviour
 
     IEnumerator CutScrence()
     {
+        audioManager.StopBgm();
+        audioManager.PlayVfx(audioManager.MonsterRoar);
         animatorPL.SetTrigger("Hurt");
         shakingCam.isShakaShaka=true;
 
@@ -84,7 +89,7 @@ public class MainMenuControl : MonoBehaviour
         
 
         yield return new WaitUntil(() => player.Back==true );
-
+        audioManager.PlayVfx(audioManager.MonsterRoar);
         animatorPL.SetTrigger("Hurt");
         boss.Helloo=true;
         boss.tCoro++;
@@ -93,6 +98,7 @@ public class MainMenuControl : MonoBehaviour
         //shakingCam.isShakaShaka=false;
 
         Debug.Log("Stage3");
+        audioManager.PlayBgm(audioManager.BgmRun);
         player.PLAYED=true;
         Gameplayui.SetActive(true);
        

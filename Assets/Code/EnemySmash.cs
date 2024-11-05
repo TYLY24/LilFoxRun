@@ -8,11 +8,13 @@ using UnityEngine;
 public class EnemySmash : MonoBehaviour
 {
 
+    [SerializeField] AudioManager audioManager;
     Player player;
     [SerializeField]float bonce,moveDuration=4f,GModduration=1f;
+    public int SlowEf=0;
     public GameObject parentObject,Shop,Coin;
     HPnMETTER hPnMETTER;
-    [SerializeField] public bool Slow=false, getHited=false,GodMode=false,SuperGodMode=false,SlowEf=false,DameTime=false;
+    [SerializeField] public bool Slow=false, getHited=false,GodMode=false,SuperGodMode=false,DameTime=false,SlowEff=false;
     [SerializeField]Rigidbody2D rd;
     Animator anim;
     Coin coin;
@@ -59,7 +61,8 @@ public class EnemySmash : MonoBehaviour
     if(hPnMETTER.currentHealth>0)
      if(Square.gameObject.CompareTag("Trap"))
     {
-        SlowEf=true;
+        SlowEff=true;
+        SlowEf++;
         Slow=true;
          if(!player.isDEAD)
                 {
@@ -71,13 +74,16 @@ public class EnemySmash : MonoBehaviour
 
    void Damaged()
    {
+        
         if(hPnMETTER.shield>0)
          {
+            audioManager.PlayVfx(audioManager.ShieldBlock);
             hPnMETTER.shield--;
             hPnMETTER.Heart[hPnMETTER.FullHealth+hPnMETTER.shield].enabled=false;
          }
          else
          {
+            audioManager.PlayVfx(audioManager.Hurt);
             anim.SetTrigger("Hurt");
              hPnMETTER.currentHealth--;
              getHited=true;

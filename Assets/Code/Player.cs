@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     
   [SerializeField] GameObject Coins,Bonk,Cam,GameoverUI,TurnUp,TurnBack,TurnoffButton1,TurnoffButton2,TurnoffButton3;
 
-    
+    [SerializeField] AudioManager audioManager;
     ShakingCam shakingCam;
     [SerializeField] public float MaxJump=2,Accelerate=0,DownArrow=50;
 
@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
 
     void DEad()
     {
+      
       velocity.x=0;
         anim.SetTrigger("Hurt");
         shakingCam.isShakaShaka=false;
@@ -127,6 +128,8 @@ public class Player : MonoBehaviour
         {
           Jumping();
           MaxJump-=10;
+          audioManager.StopBgm();
+          audioManager.PlayVfx(audioManager.Ded);
           GameoverUI.SetActive(true);
           TurnoffButton1.SetActive(false);
           TurnoffButton2.SetActive(false);
@@ -142,6 +145,9 @@ public class Player : MonoBehaviour
       if( MaxJump>0)
         {
             MaxJump--;
+            
+            audioManager.PlayVfx(audioManager.Jump);
+            
             Jumping();
 
         }
@@ -259,7 +265,11 @@ public class Player : MonoBehaviour
         if(MaxJump==1)
         state=MovementState.jump;
         else
-        state=MovementState.doublejump;
+        
+          
+          state=MovementState.doublejump;
+        
+        
       }else if(rb.velocity.y<.1f)
       {
         onair=true;

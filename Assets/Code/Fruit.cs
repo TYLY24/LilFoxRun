@@ -21,7 +21,7 @@ public class Fruit : MonoBehaviour
     {
         
         animator.SetTrigger("Ded");
-       Destroyit();
+       
         
     }
     
@@ -34,7 +34,7 @@ public class Fruit : MonoBehaviour
         Type=Random.Range(0,7);
          animator.SetInteger("TypeFruit", Type);
     }
-    void Destroyit()
+    public void Destroyit()
     {
          Destroy(gameObject);
     }

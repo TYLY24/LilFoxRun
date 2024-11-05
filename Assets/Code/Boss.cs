@@ -9,9 +9,10 @@ public class Boss : MonoBehaviour
     Animator anim;
     public GameObject Shaka,Slow,me;
     public GameObject[] BG;
+    [SerializeField]AudioManager audioManager;
     ShakingCam shakingCam;
     EnemySmash enemySmash;
-    public bool Helloo=false,Cum=false,snap=true,Atak=false,next=false;
+    public bool Helloo=false,scream=true,Cum=false,snap=true,Atak=false,next=false;
     public float HelloPos=-11,AtakPos=-9,tCoro=1;
     Vector2 Location;
     Coroutine ActiveCorotine;
@@ -28,12 +29,12 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enemySmash.SlowEf)
+        if(enemySmash.SlowEff)
         {
             Helloo=true;       
             tCoro++;
-            enemySmash.SlowEf=false;
-             
+            
+             enemySmash.SlowEff=false;
         }
         
 
@@ -45,7 +46,7 @@ public class Boss : MonoBehaviour
         }
         else
         {
-            
+            scream=true;
             Vector2 pos=transform.position;
             if(pos.x>Location.x)
             {
@@ -133,7 +134,11 @@ public class Boss : MonoBehaviour
 
     void Hello()
     {
-       
+       if(scream)
+       {
+        audioManager.PlayVfx(audioManager.MonsterRoar);
+        scream=false;
+       }
         Vector2 pos=transform.position;
         if(pos.x<HelloPos)
         {
