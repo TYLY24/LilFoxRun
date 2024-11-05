@@ -45,9 +45,9 @@ if(square.gameObject.CompareTag("Heal"))
     void Start()
     {
         //if(nang cap thì full heath =4)
-        FullHealth=FullHealth+shopContents.HPLV-1;
+        //FullHealth=FullHealth+shopContents.HPLV-1;
         currentHealth=FullHealth;
-        shield+=shopContents.Shield;
+        //shield+=shopContents.Shield;
         
         for(int i=0; i<FullHealth+shield;i++)
         {

@@ -532,6 +532,7 @@ MonoBehaviour:
   Maxvel: 10
   test: 0
   StartX: 0
+  Coins: {fileID: 665272265}
   Bonk: {fileID: 2098127686}
   Cam: {fileID: 1822437294}
   GameoverUI: {fileID: 582561004}

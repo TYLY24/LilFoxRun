@@ -51,4 +51,9 @@ public class SaveNLoad : MonoBehaviour
             file.Close();
         }
     }
+
+    void ClearData()
+    {
+        
+    }
 }

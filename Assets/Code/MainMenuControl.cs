@@ -20,6 +20,7 @@ public class MainMenuControl : MonoBehaviour
     Coin coin;
     [SerializeField] GoGogo[] goGogos;
     Animator animatorPL;
+    HPnMETTER hPnMETTER;
     Boss boss;
     Vector2 targetPosition;
     bool Hited=false;
@@ -28,6 +29,7 @@ public class MainMenuControl : MonoBehaviour
     
     void Start()
     {
+        hPnMETTER=Me.GetComponent<HPnMETTER>();
         boss=Boss.GetComponent<Boss>();
         shakingCam=shaka.GetComponent<ShakingCam>();
         animatorPL=Me.GetComponent<Animator>();
@@ -49,7 +51,11 @@ public class MainMenuControl : MonoBehaviour
         //gameObject.SetActive(false);
         if(!Hited)
         {
+            hPnMETTER.shield+=coin.InfoToSave.UpdateShieldsLV;
+             hPnMETTER.FullHealth+=coin.InfoToSave.UpdateHPLV;
+             hPnMETTER.currentHealth=hPnMETTER.FullHealth;
             StartCoroutine(CutScrence());
+            
             Hited=true;
         }
         

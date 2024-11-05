@@ -15,6 +15,8 @@ public class ShopContents : MonoBehaviour
     void Start()
     {
         coin=Coin.GetComponent<Coin>();
+        
+
         SetBuy();
         
         CheckBuy();
@@ -50,6 +52,7 @@ public class ShopContents : MonoBehaviour
         {
             Moneys=Moneys-PriceShield;
             Shield++;
+            if(Shield!=0)
             PriceShield*=2;
         }
         //SAVE CALLL
@@ -64,7 +67,7 @@ public class ShopContents : MonoBehaviour
         if(PriceFruits<=Moneys)
         {
             Moneys=Moneys-PriceFruits;
-            HPLV++;
+            FruitsLV++;
             PriceFruits=(int)(PriceFruits*1.5);
         }
         //SAVE CALLL
@@ -87,6 +90,9 @@ public class ShopContents : MonoBehaviour
     }
     void CheckBuy()
     {
+
+
+
         if(PriceHP>Moneys)
          TxtPriceHP.color = Color.red;
         else
@@ -117,12 +123,19 @@ public class ShopContents : MonoBehaviour
     }
     void SetBuy()
     {
-        Moneys=coin.InfoToSave.Fruits;
+        if(coin.InfoToSave.UpdateHPLV!=0)
+        {
+            Moneys=coin.InfoToSave.Fruits;
         FruitsLV=coin.InfoToSave.UpdateFruitsLV;
         PriceFruits=coin.InfoToSave.UpdateFruitsPrice;
         HPLV=coin.InfoToSave.UpdateHPLV;
         PriceHP=coin.InfoToSave.UpdateHPPrice;
         Shield=coin.InfoToSave.UpdateShieldsLV;
+        if(Shield!=0)
         PriceShield=coin.InfoToSave.UpdateShieldsPrice;
+        else
+        PriceShield=coin.InfoToSave.UpdateShieldsPrice=80;
+        }
+        
     }
 }

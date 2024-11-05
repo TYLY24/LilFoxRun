@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float Jumpvel=10,Maxvel=10, test,StartX;
     
     
-[SerializeField] GameObject Bonk,Cam,GameoverUI,TurnUp,TurnBack,TurnoffButton1,TurnoffButton2,TurnoffButton3;
+  [SerializeField] GameObject Coins,Bonk,Cam,GameoverUI,TurnUp,TurnBack,TurnoffButton1,TurnoffButton2,TurnoffButton3;
 
     
     ShakingCam shakingCam;
@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     enum MovementState{run,jump,doublejump,fall,idle,Walk}
    [SerializeField] int Ran = 5, ii=1;
     bonk bonk;
+    Coin coin;
     SpriteRenderer sprite;
 
 
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-      
+      coin =Coins.GetComponent<Coin>();
       sprite =GetComponent<SpriteRenderer>();
       StartX=transform.position.x;
       shakingCam=Cam.GetComponent<ShakingCam>();
@@ -131,7 +132,7 @@ public class Player : MonoBehaviour
           TurnoffButton2.SetActive(false);
           TurnoffButton3.SetActive(false);
         }
-        
+        coin.InfoToSave.UpdateShieldsLV=0;
         collider2Dd.isTrigger = true;
         //Do thing here
     }
