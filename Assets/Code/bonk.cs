@@ -36,7 +36,7 @@ public class bonk : MonoBehaviour
        
         if(Input.GetKeyDown(KeyCode.RightArrow) && !Attack)
         {
-            //Attack=true;
+            Attack=true;
             //player.Attack=true;
             enemySmash.GodMode=true;
             anim.SetTrigger("Attack");  
@@ -115,6 +115,7 @@ public class bonk : MonoBehaviour
 
     void DamageTime()
     {
+        Attack=false;
         enemySmash.GodMode=false;
     }
     void OnDrawGizmos()

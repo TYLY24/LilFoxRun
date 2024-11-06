@@ -75,7 +75,9 @@ public class MainMenuControl : MonoBehaviour
         shakingCam.isShakaShaka=true;
 
         yield return new WaitForSeconds(1f);
-        shakingCam.isShakaShaka=false;
+
+        
+            shakingCam.isShakaShaka=false;
         player.Chille=false;
         // A=(float)Math.Round(player.transform.position.x, 2);
         // B=(float)Math.Round(targetPosition.x, 2);
@@ -89,8 +91,11 @@ public class MainMenuControl : MonoBehaviour
         
 
         yield return new WaitUntil(() => player.Back==true );
+        
+        
         audioManager.PlayVfx(audioManager.MonsterRoar);
         animatorPL.SetTrigger("Hurt");
+        
         boss.Helloo=true;
         boss.tCoro++;
 
