@@ -10,6 +10,7 @@ public class ShopSettingExitUI : MonoBehaviour
     [SerializeField] AudioManager audioManager;
     [SerializeField] AudioMixer Mymixer;
     [SerializeField] Slider musicSlider,masterSlider,SfxSlider;
+    [SerializeField] SaveNLoad saveNLoad;
     // Start is called before the first frame update
     
     void Start()
@@ -46,8 +47,9 @@ public class ShopSettingExitUI : MonoBehaviour
         ClearDataYN.SetActive(false);
     }
     public void Yes()
-    {
+    {       
         PlayerPrefs.DeleteAll();
+        saveNLoad.ClearData();
         Time.timeScale = 1;
         SceneManager.LoadScene("GamePlay");
     }

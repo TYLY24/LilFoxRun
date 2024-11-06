@@ -52,8 +52,18 @@ public class SaveNLoad : MonoBehaviour
         }
     }
 
-    void ClearData()
+    public void ClearData()
+{
+    string path = Application.persistentDataPath + "/Player.dat";
+    
+    if (File.Exists(path))
     {
-        
+        File.Delete(path);
+        Debug.Log("Data cleared!");
     }
+    else
+    {
+        Debug.LogWarning("No data file found to delete.");
+    }
+}
 }

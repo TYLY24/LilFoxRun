@@ -233,8 +233,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 196477401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -431,8 +431,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2095445834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -538,7 +538,7 @@ RectTransform:
   m_Father: {fileID: 1873406301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4779,7 +4779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &780349799
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6694,7 +6694,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 948918604}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1828454458}
+        m_TargetAssemblyTypeName: ShopSettingExitUI, Assembly-CSharp
+        m_MethodName: Yes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &948918604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7502,7 +7514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1094771712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9898,7 +9910,7 @@ RectTransform:
   m_Father: {fileID: 672487502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9972,8 +9984,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 461740464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10146,7 +10158,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1544221064}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1828454458}
+        m_TargetAssemblyTypeName: ShopSettingExitUI, Assembly-CSharp
+        m_MethodName: No
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1544221064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11040,7 +11064,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1623583159}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1828454458}
+        m_TargetAssemblyTypeName: ShopSettingExitUI, Assembly-CSharp
+        m_MethodName: ClearData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1623583159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12673,11 +12709,13 @@ MonoBehaviour:
   Mainmenu: {fileID: 1094771711}
   Shop: {fileID: 206889463}
   Setting: {fileID: 1965104955}
+  ClearDataYN: {fileID: 780349798}
   audioManager: {fileID: 2039083914}
   Mymixer: {fileID: 24100000, guid: 1f26ef4535b27334a872ad83242134cf, type: 2}
   musicSlider: {fileID: 1622914523}
   masterSlider: {fileID: 1596335259}
   SfxSlider: {fileID: 1942050338}
+  saveNLoad: {fileID: 830362499}
 --- !u!1 &1835177005
 GameObject:
   m_ObjectHideFlags: 0
@@ -13624,7 +13662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1965104956
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13800,7 +13838,7 @@ RectTransform:
   m_Father: {fileID: 513768096}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
