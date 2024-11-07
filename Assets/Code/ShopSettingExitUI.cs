@@ -9,7 +9,7 @@ public class ShopSettingExitUI : MonoBehaviour
     public GameObject ExitPanel,Mainmenu,Shop,Setting,ClearDataYN;
     [SerializeField] AudioManager audioManager;
     [SerializeField] AudioMixer Mymixer;
-    [SerializeField] Slider musicSlider,masterSlider,SfxSlider;
+    [SerializeField] Slider musicSlider,masterSlider,SfxSlider, musicSlider2,masterSlider2,SfxSlider2;
     [SerializeField] SaveNLoad saveNLoad;
     // Start is called before the first frame update
     
@@ -32,6 +32,7 @@ public class ShopSettingExitUI : MonoBehaviour
 // --------------------------SETTING PART---------------------
     public void SettingButton()
     {
+        LoadVolume();
         audioManager.PlayVfx(audioManager.ButtonBig);
         Setting.SetActive(true);
         Mainmenu.SetActive(false);
@@ -70,9 +71,21 @@ public class ShopSettingExitUI : MonoBehaviour
         Mymixer.SetFloat("MusicVolume",Mathf.Log10(Vol)*20);
         PlayerPrefs.SetFloat("musicVol",Vol);
     }
+    public void VolumeMusic2()
+    {
+        float Vol=musicSlider2.value;
+        Mymixer.SetFloat("MusicVolume",Mathf.Log10(Vol)*20);
+        PlayerPrefs.SetFloat("musicVol",Vol);
+    }
     public void VolumeSfx()
     {
         float Vol=SfxSlider.value;
+        Mymixer.SetFloat("SfxVolume",Mathf.Log10(Vol)*20);
+        PlayerPrefs.SetFloat("sfxVol",Vol);
+    }
+    public void VolumeSfx2()
+    {
+        float Vol=SfxSlider2.value;
         Mymixer.SetFloat("SfxVolume",Mathf.Log10(Vol)*20);
         PlayerPrefs.SetFloat("sfxVol",Vol);
     }
@@ -82,12 +95,18 @@ public class ShopSettingExitUI : MonoBehaviour
         Mymixer.SetFloat("MasterVolume",Mathf.Log10(Vol)*20);
         PlayerPrefs.SetFloat("masterVol",Vol);
     }
+    public void VolumeMaster2()
+    {
+        float Vol=masterSlider2.value;
+        Mymixer.SetFloat("MasterVolume",Mathf.Log10(Vol)*20);
+        PlayerPrefs.SetFloat("masterVol",Vol);
+    }
 
     public void LoadVolume()
     {
-        musicSlider.value=PlayerPrefs.GetFloat("musicVol");
-        SfxSlider.value=PlayerPrefs.GetFloat("sfxVol");
-        masterSlider.value=PlayerPrefs.GetFloat("masterVol");
+        musicSlider2.value=musicSlider.value=PlayerPrefs.GetFloat("musicVol");
+        SfxSlider2.value= SfxSlider.value=PlayerPrefs.GetFloat("sfxVol");
+        masterSlider2.value=masterSlider.value=PlayerPrefs.GetFloat("masterVol");
         VolumeMusic();
         VolumeSfx();
         VolumeMaster();

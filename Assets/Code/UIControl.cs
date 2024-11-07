@@ -64,7 +64,7 @@ public class UIControl : MonoBehaviour
     }
     public void BackToMainmenu()
     {
-                
+               // Debug.Log("trueButton");
                 MainMenuASkUI.SetActive(true);
 
     }
