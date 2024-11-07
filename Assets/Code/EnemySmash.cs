@@ -36,7 +36,7 @@ public class EnemySmash : MonoBehaviour
    {
     
       if(Square.gameObject.CompareTag("Fruit"))
-      coin.apple=coin.apple+1*coin.InfoToSave.UpdateFruitsLV;
+      coin.apple++;
     
     if(!getHited)
     if(Square.gameObject.CompareTag("WeakPoint"))

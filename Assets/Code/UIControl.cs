@@ -10,7 +10,8 @@ public class UIControl : MonoBehaviour
     public Text Meter,Fruit ;
     public float Duration=8,targetf=0,targetm=0;
     public float currentvalue=0;
-    public GameObject Player,UIingame;
+    public GameObject Player,UIingame,PauseUi,MainMenuASkUI;
+    [SerializeField]bonk bonk;
     MainMenuControl mainMenuControl;
     Player player;
     // Start is called before the first frame update
@@ -29,7 +30,10 @@ public class UIControl : MonoBehaviour
         player=Player.GetComponent<Player>();
     }
 
-
+    public void AttackBt()
+    {
+        bonk.Atackkk();
+    }
     public void JUmpButton()
     {
         player.Jumpinginput();
@@ -46,4 +50,37 @@ public class UIControl : MonoBehaviour
             yield return null;
         }
     }
+    public void PauseBt()
+    {
+                Time.timeScale = 0;
+                PauseUi.SetActive(true);
+
+    }
+    public void BackToGBt()
+    {
+                Time.timeScale = 1;
+                PauseUi.SetActive(false);
+
+    }
+    public void BackToMainmenu()
+    {
+                
+                MainMenuASkUI.SetActive(true);
+
+    }
+    public void MainmenuYes()
+    {
+                
+                Time.timeScale = 1;
+                SceneManager.LoadScene("GamePlay");
+
+    }
+    public void MainmenuNo()
+    {
+                
+                 
+                MainMenuASkUI.SetActive(false);
+
+    }
+
 }

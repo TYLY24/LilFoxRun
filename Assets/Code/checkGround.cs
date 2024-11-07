@@ -7,27 +7,31 @@ public class checkGround : MonoBehaviour
 
     Player player;
     bool Groundne;
+
+    [SerializeField] Vector2 boxsize;
+    [SerializeField] float castDis;
+    public LayerMask Ground;
     // Start is called before the first frame update
 
 
-    void OnTriggerStay2D(Collider2D collider2D)
-        {
-      if(collider2D.gameObject.CompareTag("Ground")||collider2D.gameObject.CompareTag("Finish")||collider2D.gameObject.CompareTag("StartPoint"))
-    {
-      //Debug.Log("MAT DAT SUP DO " + isGround + " đã đi vào vùng kích hoạt!");
+    // void OnTriggerStay2D(Collider2D collider2D)
+    //     {
+    //   if(collider2D.gameObject.CompareTag("Ground")||collider2D.gameObject.CompareTag("Finish")||collider2D.gameObject.CompareTag("StartPoint"))
+    // {
+    //   //Debug.Log("MAT DAT SUP DO " + isGround + " đã đi vào vùng kích hoạt!");
       
     
 
-      Groundne=true;
+    //   Groundne=true;
       
 
-      //Debug.Log("MAT DAT SUP DO " + isGround + " đã đi vào vùng kích hoạt!");
+    //   //Debug.Log("MAT DAT SUP DO " + isGround + " đã đi vào vùng kích hoạt!");
 
-    }
-    else
-    Groundne=false;
+    // }
+    // else
+    // Groundne=false;
     
-    }
+    // }
      void OnCollisionEnter2D(Collision2D collision)
      {
        if(collision.gameObject.CompareTag("Ground")||collision.gameObject.CompareTag("Finish")||collision.gameObject.CompareTag("StartPoint"))
@@ -46,9 +50,30 @@ public class checkGround : MonoBehaviour
     void Update()
     {
 
-      if(Groundne)
-      player.isGround=true;
+      // if(Groundne)
+      // 
+      // else
+      // player.isGround=false;
+     
+        player.isGround=Groundchecking();
+       
+    }
+
+     bool Groundchecking()
+    {
+      if(Physics2D.BoxCast(transform.position,boxsize,0,-transform.up,castDis,Ground))
+      {
+        
+        return true;
+      }
       else
-      player.isGround=false;
+      {
+       
+        return false;
+      }
+    }
+    void OnDrawGizmos()
+    {
+      Gizmos.DrawWireCube(transform.position-transform.up*castDis,boxsize);
     }
 }

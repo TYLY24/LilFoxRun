@@ -9,14 +9,14 @@ public class Coin : MonoBehaviour
 //     HPnMETTER hPnMETTER;
 
     public SaveInfo InfoToSave;
-     public Text Meter,Fruit ;
+     public Text Meter,Fruit,SBFruit,SbMeter ;
     public GameObject Pl,UIControl,SaveManage,Shop;
     public SaveNLoad saveNLoad;
     Player player;
-    public float Meterr=0,test=0,test1=0;
+    public float Meterr=0,test=0;
     UIControl uIControl;
     public int apple=0, LVApple;
-
+    bool test1=true;
     ShopContents shopContents;
     
 
@@ -32,10 +32,12 @@ public class Coin : MonoBehaviour
     {
         M();
         Fruits();
-        if(player.isDEAD&&test1==0)
+        if(player.isDEAD&&test1==true)
         {
           SaveScore();
-          test1++;
+          test1=false;
+           SBFruit.text= (int)(apple)+"";
+          SbMeter.text= (int)(Meterr)+" m";
         }
          
     }
@@ -45,14 +47,19 @@ public class Coin : MonoBehaviour
     {
       uIControl.targetf=apple;
       Fruit.text= ""+apple;
+     
     }
     void M()
     {
-      test+=Time.deltaTime;
-      if(player.velocity.x!=0)
-        Meterr= player.velocity.x *test+0.5f*player.Accelerate*test*test;
+      if(player.PLAYED==true)
+      {
+        test+=Time.deltaTime;
+        if(player.velocity.x!=0)
+          Meterr= player.velocity.x *test+0.5f*player.Accelerate*test*test;
         uIControl.targetm=Meterr;
         Meter.text= (int)(Meterr)+ " m";
+      }
+      
     }
     void SaveScore()
     {
@@ -62,6 +69,8 @@ public class Coin : MonoBehaviour
       shopContents.Shield=0;
       saveNLoad.Save();
     }
+
+
 //     void Start()
 //     {
 //         hPnMETTER=GetComponent<HPnMETTER>();

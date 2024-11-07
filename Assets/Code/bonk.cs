@@ -36,15 +36,9 @@ public class bonk : MonoBehaviour
        
         if(Input.GetKeyDown(KeyCode.RightArrow) && !Attack)
         {
-            Attack=true;
-            //player.Attack=true;
-            enemySmash.GodMode=true;
-            anim.SetTrigger("Attack");  
-            Myanim.SetTrigger("Attack");  
-            //anim.SetTrigger("Ground");
-             AnimGroundCheck();
-           
-          // StartCoroutine(AttackCooldown());
+            
+           Atackkk();
+          
 
         }
        
@@ -55,7 +49,16 @@ public class bonk : MonoBehaviour
         // }
         
     }
-
+    public void Atackkk()
+    {
+        Attack=true;
+            
+            enemySmash.GodMode=true;
+            anim.SetTrigger("Attack");  
+            Myanim.SetTrigger("Attack");  
+            
+             AnimGroundCheck();
+    }
     private void AnimGroundCheck()
     {
         

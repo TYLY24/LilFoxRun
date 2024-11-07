@@ -18,11 +18,14 @@ public class ShopContents : MonoBehaviour
         Debug.Log("OPEMMMMMMM");
         coin=Coin.GetComponent<Coin>();
         audioManager.Music.volume=0.5f;
+        if(coin.InfoToSave.UpdateHPLV==0)
+        SaveBuy(true);
 
         SetBuy();
         
         CheckBuy();
         SetText();
+        coin.saveNLoad.Save();
     }
 
     // Update is called once per frame
@@ -48,7 +51,7 @@ public class ShopContents : MonoBehaviour
         else
         audioManager.PlayVfx(audioManager.BuyDenied);
         //SAVE CALLL
-        SaveBuy();
+        SaveBuy(false);
         coin.saveNLoad.Save();
         SetText();
         CheckBuy();
@@ -67,7 +70,7 @@ public class ShopContents : MonoBehaviour
         else
         audioManager.PlayVfx(audioManager.BuyDenied);
         //SAVE CALLL
-        SaveBuy();
+        SaveBuy(false);
         coin.saveNLoad.Save();
         SetText();
         CheckBuy();
@@ -85,7 +88,7 @@ public class ShopContents : MonoBehaviour
         else
         audioManager.PlayVfx(audioManager.BuyDenied);
         //SAVE CALLL
-        SaveBuy();
+        SaveBuy(false);
         coin.saveNLoad.Save();
         SetText();
         CheckBuy();
@@ -154,8 +157,9 @@ public class ShopContents : MonoBehaviour
 
     }
 
-    void SaveBuy()
-    {
+    void SaveBuy(bool A)
+    {   
+        if(!A)
         coin.InfoToSave.Fruits=Moneys;
         coin.InfoToSave.UpdateFruitsLV=FruitsLV;
         coin.InfoToSave.UpdateFruitsPrice=PriceFruits;
