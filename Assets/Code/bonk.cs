@@ -38,7 +38,7 @@ public class bonk : MonoBehaviour
         {
             
            Atackkk();
-          
+          StartCoroutine(AttackCooldown());
 
         }
        
@@ -109,12 +109,12 @@ public class bonk : MonoBehaviour
           
     }
 
-    // IEnumerator AttackCooldown()
-    // {
-    //       yield return new WaitForSeconds(cooldown);
-    //       Attack=false;
-    //       // player.Attack=false;
-    // }
+    IEnumerator AttackCooldown()
+    {
+          yield return new WaitForSeconds(cooldown);
+          Attack=false;
+          // player.Attack=false;
+    }
 
     void DamageTime()
     {
