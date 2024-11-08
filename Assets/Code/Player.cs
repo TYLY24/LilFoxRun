@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+      Application.targetFrameRate=60;
       coin =Coins.GetComponent<Coin>();
       sprite =GetComponent<SpriteRenderer>();
       StartX=transform.position.x;
@@ -62,6 +63,10 @@ public class Player : MonoBehaviour
         anim=GetComponent<Animator>();
         bonk=Bonk.GetComponent<bonk>();
         StartCoroutine(Chill());
+        Vector2 sus;
+        sus=transform.position;
+        sus.x=transform.position.x+6f;
+        transform.position=sus;
     }
 
 
