@@ -13,14 +13,14 @@ public class GroundSpawner : MonoBehaviour
     [SerializeField] public Vector2 StartingPos,pos,Posii;
 
 
-[SerializeField] private GameObject[] Grounds,test,newObject;
+[SerializeField] private GameObject[] Grounds,newObject;
 [SerializeField] private GameObject GStart,GEnd,Shield,HP;
 
     [SerializeField] float Above=10,UndeGr=-10;
     Player player;
      [SerializeField] Camera cameraManin;
      public GameObject PostoSendEnemyJump;
-    [SerializeField] public int random2=1;
+    [SerializeField] public int random2=1,World=1;
 
        
         HPnMETTER hPnMETTER;

@@ -15,6 +15,7 @@ TagManager:
   - Fruit
   - Ded
   - TurnA
+  - LimboEnd
   layers:
   - Default
   - TransparentFX
