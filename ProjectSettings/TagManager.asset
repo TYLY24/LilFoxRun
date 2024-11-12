@@ -16,6 +16,7 @@ TagManager:
   - Ded
   - TurnA
   - LimboEnd
+  - Limbo
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - FeetOrBonk
   - Grounds
   - 
-  - 
+  - spawner
   - 
   - 
   - 

@@ -4,27 +4,30 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using UnityEngine.U2D.IK;
 using Random = UnityEngine.Random;
 
 public class GroundSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] public bool groundCounter=true,HaveBasement = false,Groundwillfal=false;
+    [SerializeField] public bool groundCounter=true,HaveBasement = false,Groundwillfal=false,LimboActive=false;
     [SerializeField] public Vector2 StartingPos,pos,Posii;
 
+    [SerializeField] Coin coin;
+    [SerializeField] private GameObject[] GStart,GEnd,Grounds,newObject;
+    [SerializeField] private GameObject Shield,HP,ChangingStart,ChangingMid,ChangingEnd;
 
-[SerializeField] private GameObject[] Grounds,newObject;
-[SerializeField] private GameObject GStart,GEnd,Shield,HP;
-
-    [SerializeField] float Above=10,UndeGr=-10;
-    Player player;
+   // [SerializeField] float Above=10,UndeGr=-10;
+    [SerializeField] Player player;
      [SerializeField] Camera cameraManin;
      public GameObject PostoSendEnemyJump;
     [SerializeField] public int random2=1,World=1;
 
-       
-        HPnMETTER hPnMETTER;
+      [SerializeField] int MAP=1,PLACE=1,Limbo=0;
+     [SerializeField]   HPnMETTER hPnMETTER;
+     [SerializeField] BackGrControl backGrControl;
    
+   float totalTime,totorandom;
 
 
     
@@ -36,6 +39,11 @@ void OnTriggerEnter2D(Collider2D square)
     {
  
         gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+        if (square.CompareTag("LimboEnd"))
+        {
+            Limbo=0;
+            MAP=PLACE;
+        }
     }
     void OnTriggerExit2D(Collider2D square)
     {
@@ -45,6 +53,10 @@ void OnTriggerEnter2D(Collider2D square)
             //Debug.Log("Triggered the special Box Collider 2D!");
             // Add your logic here
             groundCounter =false;
+        }
+        if (square.CompareTag("Limbo"))
+        {
+            Limbo++;
         }
 
 
@@ -57,37 +69,85 @@ void OnTriggerEnter2D(Collider2D square)
 
         offset=transform.position-cameraManin.transform.position;
     }*/
-    private void Awake()
-    {
-        player= GameObject.Find("me").GetComponent<Player>();
-       hPnMETTER= GameObject.Find("me").GetComponent<HPnMETTER>();
+    // private void Awake()
+    // {
+    //     player= GameObject.Find("me").GetComponent<Player>();
+    //    hPnMETTER= GameObject.Find("me").GetComponent<HPnMETTER>();
         
-    }
+    // }
     void Update()
     {
-        //transform.position=cameraManin.transform.position + offset;
+       
         
+       
+         
 
         if(!groundCounter)
         {
-            
-            generateGround(0);
+
+
+           if(coin.changeMap==true)
+            {
+                MAP=0;
+                LimboActive=true;
+                if(PLACE>GStart.Length) 
+                PLACE=1;
+                else
+                PLACE++;
+
+                 coin.changeMap=false;
+                
+            }
+
+
+
+            groundCounter=true;
+
+            generateGround();
+            if(totalTime*0.8f>=totorandom)
             Groundwillfall(newObject);
              
-             groundCounter=true;
+             //Limbogenerate();
+
+             if(LimboActive)
+             {
+                Limbogenerate();
+                LimboActive=false;
+             }
+            
+          
             
         }
-        // if(newObject[0].GetComponent<Grounds>().isfalling==true)
-        //     {
-        //         for(int i=1;i<newObject.Length;i++)
-        //     {
-        //         newObject[i].GetComponent<Grounds>().isfalling=true;
-        //     }
-        //     }
+         if(Limbo==2)
+        {
+            StartCoroutine(backGrControl.NewMAp(PLACE-1));
+            Limbo++;
+        }
         
         
     }
-    void generateGround(float Place)
+    void Limbogenerate()
+    {
+       
+        //// newObject =   tổ hợp mặc đất
+        int rand=Random.Range(5,10);
+        float x=ChangingMid.GetComponent<BoxCollider2D>().size.x;
+       Vector2 firstpos=pos;
+       firstpos.y=ChangingStart.transform.position.y;
+         Instantiate(ChangingStart,firstpos,quaternion.identity);
+        firstpos.x=firstpos.x+ChangingStart.GetComponent<BoxCollider2D>().size.x/2+x/2;
+        for(int i=1;i<=rand-2;i++)
+        {
+            
+            Instantiate(ChangingMid,firstpos,quaternion.identity);
+            firstpos.x=firstpos.x+x;
+        }
+        Instantiate(ChangingEnd,firstpos,quaternion.identity);
+    }
+
+
+
+    void generateGround()
     {
 
        /* float h1 = player.Jumpvel * player.Jumpvel;
@@ -104,44 +164,48 @@ void OnTriggerEnter2D(Collider2D square)
         float gravity = player.GetComponent<Rigidbody2D>().gravityScale * Physics2D.gravity.y;
         float Jumpvel=player.Jumpvel;
         float timeToApex = Jumpvel / -gravity;
-        float totalTime = timeToApex * 2;
+        totalTime = timeToApex * 2;
 
         float totalDistance = player.velocity.x * totalTime;
-        /*
-        float t = Random.Range(0, totalTime);
-
-        float x = (player.velocity.x * t)*2;
-        float y = ((Jumpvel * t + 0.5f * gravity * t * t)*2)* 0.7f;
-
-        test=totalTime;
         
-            */
-        GameObject Ground;
+        totorandom = Random.Range(0, totalTime);
+
+        float x = (player.velocity.x * totorandom)*2;
+        float y = ((Jumpvel * totorandom + 0.5f * gravity * totorandom * totorandom)*2)* 0.7f;
+
+       // test=totalTime;
+        
+            
+        GameObject Ground,Start,End;
         int Ran=Random.Range(0,Grounds.Length);
-        if(Place==UndeGr) 
-        {
-            Ground= Grounds[Random.Range(0,Grounds.Length)];
-        }
-        else if(Place==Above)
-        {
-             Ground= Grounds[Random.Range(0,Grounds.Length)];
-        }  
-        else
-        {
-            Ground= Grounds[Random.Range(0,Grounds.Length)];
-        }
+        Ground= Grounds[MAP];
+        Start= GStart[MAP];
+        End=GEnd[MAP];
+
+        // if(Place==UndeGr) 
+        // {
+        //     Ground= Grounds[Random.Range(0,Grounds.Length)];
+        // }
+        // else if(Place==Above)
+        // {
+        //      Ground= Grounds[Random.Range(0,Grounds.Length)];
+        // }  
+        // else
+        // {
+        //     Ground= Grounds[Random.Range(0,Grounds.Length)];
+        // }
         
         
-        float y=Ground.transform.position.y+Ground.GetComponent<Renderer>().bounds.size.y/2;                                    //InsertListItem here
-        float t = CalculateTimeToReachY(Jumpvel,gravity,y);
+        // float y=Ground.transform.position.y+Ground.GetComponent<Renderer>().bounds.size.y/2;                                    //InsertListItem here
+        // float t = CalculateTimeToReachY(Jumpvel,gravity,y);
         
-        float x = (player.velocity.x * t)*2*0.6f;
+        // float x = (player.velocity.x * t)*2*0.6f;
         
         
 
         
         
-        float actualY =Place+Ground.transform.position.y;//transform.position.y + y - Ground.GetComponent<Renderer>().bounds.size.y/2;
+        float actualY =Ground.transform.position.y;//transform.position.y + y - Ground.GetComponent<Renderer>().bounds.size.y/2;
         float actualX =(transform.position.x+x+Ground.GetComponent<Renderer>().bounds.size.x/2);
         
         //Tye of spawned terrain
@@ -162,7 +226,7 @@ void OnTriggerEnter2D(Collider2D square)
         newObject = new GameObject[random2];///// newObject =   tổ hợp mặc đất
         
        StartingPos=pos;
-         newObject[0] =Instantiate(GStart,pos,quaternion.identity);
+         newObject[0] =Instantiate(Start,pos,quaternion.identity);
         pos.x=pos.x+Ground.GetComponent<Renderer>().bounds.size.x;
         if(random2>2)
         Posii=pos;
@@ -172,7 +236,7 @@ void OnTriggerEnter2D(Collider2D square)
             newObject[i]=Instantiate(Ground,pos,quaternion.identity);
             pos.x=pos.x+Ground.GetComponent<Renderer>().bounds.size.x;
         }
-        newObject[random2-1]=Instantiate(GEnd,pos,quaternion.identity);
+        newObject[random2-1]=Instantiate(End,pos,quaternion.identity);
     
         
       

@@ -13,10 +13,11 @@ public class Coin : MonoBehaviour
     public GameObject Pl,UIControl,SaveManage,Shop;
     public SaveNLoad saveNLoad;
     Player player;
-    public float Meterr=0,test=0;
+    public float Meterr=0,test=0,NextChange=1000;
     UIControl uIControl;
     public int apple=0, LVApple;
     bool test1=true;
+    public bool changeMap=false;
     ShopContents shopContents;
     
 
@@ -38,6 +39,12 @@ public class Coin : MonoBehaviour
           test1=false;
            SBFruit.text= (int)(apple)+"";
           SbMeter.text= (int)(Meterr)+" m";
+        }
+        if(Meterr>=NextChange)
+        {
+          
+          changeMap=true;
+          NextChange+=500;
         }
          
     }

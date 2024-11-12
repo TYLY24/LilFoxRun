@@ -27,6 +27,7 @@ public class MainMenuControl : MonoBehaviour
     [SerializeField] float A,B,C;
 
     [SerializeField] AudioManager audioManager;
+    [SerializeField] BackGrControl backGrControl;
    
     
     void Start()
@@ -50,6 +51,7 @@ public class MainMenuControl : MonoBehaviour
     // Update is called once per frame
     public void StartButton()
     {
+        //StartCoroutine(backGrControl.NewMAp(0 ));
         //gameObject.SetActive(false);
         audioManager.PlayVfx(audioManager.ButtonBig);
         if(!Hited)

@@ -16,7 +16,7 @@ public class Paralax : MonoBehaviour
     void Awake()
     {
         X=GetComponent<SpriteRenderer>().bounds.size.x;
-        goBack=GetComponent<SpriteRenderer>().sprite.bounds.size;
+        goBack=GetComponent<SpriteRenderer>().bounds.size;
         go= GetComponent<GoGogo>();
         spriteRenderer=GetComponent<SpriteRenderer>();
         boxCollider2D=GetComponent<BoxCollider2D>();
@@ -48,6 +48,7 @@ public class Paralax : MonoBehaviour
         spriteRenderer.sprite=bg[N];
         NewX=spriteRenderer.bounds.size.x;
         NewgoBack=spriteRenderer.sprite.bounds.size.x;
+        goBack.x=spriteRenderer.bounds.size.x;
         boxCollider2D.size=new Vector3(NewgoBack, boxCollider2D.size.y);
         X=NewX;
     }
