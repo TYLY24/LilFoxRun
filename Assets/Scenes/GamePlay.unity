@@ -3515,6 +3515,9 @@ MonoBehaviour:
   PostoSendEnemyJump: {fileID: 1956201646}
   random2: 1
   World: 1
+  MAP: 1
+  PLACE: 1
+  Limbo: 0
   hPnMETTER: {fileID: 203218956}
   backGrControl: {fileID: 1297907255}
 --- !u!61 &532359191
@@ -3668,16 +3671,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b8afbb6e8c83c4fbbb63d6dc5b22f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 5
   obtacle: {fileID: 5665126252850234992, guid: 7fbbba33ba8b8ad459b2611867665ee6, type: 3}
   Coin: {fileID: 6355206518136221570, guid: 8175225d4133f024587e8c2e6bdff40c, type: 3}
   Enemy: {fileID: 7661864015577133117, guid: 3fc60bf644612f043a1235adfe532182, type: 3}
+  Eagel: {fileID: 883864397556978901, guid: ede81ce53a370304aa3166f597098163, type: 3}
   Trap:
   - {fileID: 4386981079613115983, guid: 249cde726347c16468e3242bf1afb9e8, type: 3}
   - {fileID: 2593104327666106924, guid: d447937da5bfb714e9034e0eef5e9a28, type: 3}
   LocationY: 0
+  player: {fileID: 203218955}
   test: {x: 0, y: 0}
-  Player: {fileID: 203218949}
-  testFall: {x: 0, y: 0}
   ObtacSize: {x: 0, y: 0}
 --- !u!1 &564481718
 GameObject:
@@ -9363,6 +9367,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2039083915}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1111519020
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 883864397556978901, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_Name
+      value: Enemy2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827821287221222730, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827821287221222730, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827821287221222730, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.16686109
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827821287221222730, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827821287221222730, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827821287221222730, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827821287221222730, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827821287221222730, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827821287221222730, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827821287221222730, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793322562200434792, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793322562200434792, guid: ede81ce53a370304aa3166f597098163, type: 3}
+      propertyPath: DiveSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ede81ce53a370304aa3166f597098163, type: 3}
 --- !u!1 &1117507494
 GameObject:
   m_ObjectHideFlags: 0
@@ -17903,3 +17972,4 @@ SceneRoots:
   - {fileID: 1828454457}
   - {fileID: 2039083915}
   - {fileID: 42154767}
+  - {fileID: 1111519020}

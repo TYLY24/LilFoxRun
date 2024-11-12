@@ -8,18 +8,22 @@ using Random = UnityEngine.Random;
 
 public class CoinBuffEnemy : MonoBehaviour
 {
+    public int Level=5;
     bool SpawnTime=false;
     GroundSpawner groundSpawner;
-    [SerializeField]GameObject obtacle,Coin,Enemy;
+    [SerializeField]GameObject obtacle,Coin,Enemy,Eagel;
     [SerializeField]GameObject[] Trap;
      private Camera mainCamera;
      public float LocationY;
-     int NumOfEnemy;
-     Player player;
+     //int NumOfEnemy;
+     [SerializeField] Player player;
      [SerializeField] Vector2 test;
-     public GameObject Player;
+     //public GameObject Player;
 
-     [SerializeField] Vector2 testFall,ObtacSize;
+     [SerializeField] Vector2 ObtacSize;
+
+        List<int> MonsterOption = new List<int> {1, 2, 3},
+                RandomSpawn=new List<int> {1, 2};//if EMPTY = MAX AMOUNT OF MOB
 
     private void Start()
     {
@@ -29,7 +33,7 @@ public class CoinBuffEnemy : MonoBehaviour
     private void Awake()
     {
         groundSpawner = GetComponent<GroundSpawner>();
-        player= Player.GetComponent<Player>();
+        //player= Player.GetComponent<Player>();
         ObtacSize=obtacle.GetComponent<Renderer>().bounds.size;
     }
     void OnTriggerExit2D(Collider2D square)
@@ -37,8 +41,9 @@ public class CoinBuffEnemy : MonoBehaviour
 
         if (square.CompareTag("Finish"))
         {
-            SpawnTime=true;
-            Random.Range(0,5);
+           SpawnTime=true;
+            //Spawn();
+           // Random.Range(0,5);
         }
 
     }
@@ -47,16 +52,62 @@ public class CoinBuffEnemy : MonoBehaviour
     {
         if(SpawnTime)
         {
-            if(groundSpawner.random2>3)
-            SpawnTrap(groundSpawner.StartingPos);
-            if(groundSpawner.random2>5)
-            SpawnEnemy(groundSpawner.StartingPos);
+            Spawn();
+            // if(groundSpawner.random2>3)
+            // SpawnTrap(groundSpawner.StartingPos);
+            // if(groundSpawner.random2>5)
+            // SpawnEnemy(groundSpawner.StartingPos);
             
            
-            SpawnCoin(groundSpawner.StartingPos);
-            SpawnTime=false;
+            // SpawnCoin(groundSpawner.StartingPos);
+             SpawnTime=false;
         }
     }
+
+    void Spawn()
+    {
+        SpawnCoin(groundSpawner.StartingPos);
+
+        for(int i=1; i<=Level;i++)
+        {   
+            if(RandomSpawn.Count>0)
+            {
+                    int RandomEnemyType=RandomSpawn[Random.Range(0, RandomSpawn.Count)];
+                switch (RandomEnemyType)
+                {
+                    case 1:
+                    if(groundSpawner.random2>3)
+                        {
+                            SpawnTrap(groundSpawner.StartingPos);
+                            RandomSpawn.Remove(RandomEnemyType);
+                        }
+                        
+                        break;
+                    case 2:
+                    if(groundSpawner.random2>5)
+                    {
+                        if(MonsterOption.Count==1)
+                        RandomSpawn.Remove(RandomEnemyType);
+
+                        int random= MonsterOption[Random.Range(0, MonsterOption.Count)];
+                        SpawnEnemy(groundSpawner.StartingPos,random);
+                        MonsterOption.Remove(random);
+                    }
+                        
+                        break;
+                }
+            }
+                
+        }
+        //ADD HERE if ADD MOb
+        RandomSpawn=    new List<int> {1, 2};
+        MonsterOption= new List<int> {1, 2, 3};
+    }
+
+
+
+
+
 
     void SpawnCoin(Vector2 pos)
     {
@@ -90,51 +141,51 @@ public class CoinBuffEnemy : MonoBehaviour
 
 
     }
-    void SpawnEnemy(Vector2 pos)
+    void SpawnEnemy(Vector2 pos,int random)
     {
-        int random=Random.Range(1,3);
+        
         Vector2 posi;
-        posi.x=pos.x+ObtacSize.x*(groundSpawner.random2-1);
-        posi.y=pos.y+ ObtacSize.y/2+Enemy.GetComponent<Renderer>().bounds.size.y;
+        
+         posi.y=pos.y+ ObtacSize.y/2+Enemy.GetComponent<Renderer>().bounds.size.y;
         LocationY=posi.y;
         
-        Instantiate(Enemy,posi,quaternion.identity);
-
-        if(random>=2)
-        {
-            posi.x=pos.x+ObtacSize.x*(groundSpawner.random2-2);
         
-        
-        Instantiate(Enemy,posi,quaternion.identity);
 
-            if(random>=3)
+        if(random==2)
+            {
+                
+                posi.x=pos.x+ObtacSize.x*(groundSpawner.random2-2);
+                 Instantiate(Enemy,posi,quaternion.identity);
+            
+            } 
+        else if(random==3)
             {
                 Vector3 EnemyCorners = mainCamera.WorldToViewportPoint(gameObject.GetComponent<Renderer>().bounds.min);
-            Vector2 Place;
-            Vector3 YEdge = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, mainCamera.nearClipPlane));
-          //  Vector3 XEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, 1, mainCamera.nearClipPlane));
-            Place.y=YEdge.y+Enemy.GetComponent<Renderer>().bounds.size.y;
-            
-            int randomplace=Random.Range(3,3);
-            if(randomplace==1)
-            Place.x=pos.x+ObtacSize.x*(groundSpawner.random2-3);
-            else if(randomplace==2)
-            Place.x=YEdge.x+ObtacSize.x*groundSpawner.random2;
-            else 
-            
-            Place.x=pos.x;//+obtacle.GetComponent<Renderer>().bounds.size.x*(groundSpawner.random2-5);
+                Vector2 Place;
+                Vector3 YEdge = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, mainCamera.nearClipPlane));
+            //  Vector3 XEdge = mainCamera.ViewportToWorldPoint(new Vector3(0, 1, mainCamera.nearClipPlane));
+                Place.y=YEdge.y+Enemy.GetComponent<Renderer>().bounds.size.y;
+                
+                int randomplace=Random.Range(1,2);
+                if(randomplace==1)
+                Place.x=pos.x+ObtacSize.x*(groundSpawner.random2-3);
+                
+                else 
+                
+                Place.x=pos.x;//+obtacle.GetComponent<Renderer>().bounds.size.x*(groundSpawner.random2-5);
 
-            test=Place;
+                test=Place;
 
-            Instantiate(Enemy,Place,quaternion.identity);
+                Instantiate(Enemy,Place,quaternion.identity);
             
+            } 
+        else
+            {
+               
+                posi.x=pos.x+ObtacSize.x*(groundSpawner.random2-1);
+                Instantiate(Enemy,posi,quaternion.identity);
             }
-            
-            //this is for jumping Enemy
-            
-            
-            
-        }
+        
         
     }
 

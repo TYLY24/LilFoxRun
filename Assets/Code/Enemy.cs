@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         
       sprite=GetComponent<SpriteRenderer>();
 
-
+      
       
      // screenPoint = mainCamera.WorldToViewportPoint(Enemyplace.transform.position);
         
@@ -103,8 +103,8 @@ public class Enemy : MonoBehaviour
             transform.position=pos;
         }
        // Debug.Log(Physics2D.OverlapBox())
-             screenPoint = mainCamera.WorldToViewportPoint(Enemyplace.transform.position);
-
+             
+      screenPoint = mainCamera.WorldToViewportPoint(Enemyplace.transform.position);
         onscreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1;
         if(coinBuffEnemy.LocationY<transform.position.y&&onscreen)
         { 
