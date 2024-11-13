@@ -55,7 +55,6 @@ public class bonk : MonoBehaviour
             
             enemySmash.GodMode=true;
             anim.SetTrigger("Attack");  
-            Myanim.SetTrigger("Attack");  
             
              AnimGroundCheck();
     }
@@ -77,6 +76,8 @@ public class bonk : MonoBehaviour
             // transform.position=X;
             AttackRange=1.5f;
             anim.SetTrigger("Ground");
+                        Myanim.SetTrigger("Attack");  
+
           
         }
     }
@@ -96,9 +97,15 @@ public class bonk : MonoBehaviour
             foreach (Collider2D enemy in hitEnemy)
             {
                 Debug.Log("hited");
-                enemy.GetComponent<Enemy>().Bonked=true;
+                //enemy.GetComponent<BonkNDed>().BonkBonk();
                 //if(!player.isGround)
                 //Onair=true;
+                BonkNDed bonkComponent = enemy.GetComponent<BonkNDed>();
+
+                if (bonkComponent != null)
+                {
+                    bonkComponent.BonkBonk();
+                }
             }
         //     timer+=Time.deltaTime;
         //     yield return null;

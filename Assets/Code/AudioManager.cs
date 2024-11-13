@@ -8,10 +8,12 @@ public class AudioManager : MonoBehaviour
 
 public AudioSource Music;
 public AudioSource Sfx;
-
 public AudioClip BgmMain;
 public AudioClip BgmRun;
 public AudioClip BgmCave;
+public AudioClip second;
+public AudioClip third;
+public AudioClip four;
 public AudioClip ShieldBlock;
 public AudioClip Attack;
 public AudioClip Buy;

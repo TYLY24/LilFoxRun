@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour
 {
 
 //     HPnMETTER hPnMETTER;
-
+    [SerializeField]CoinBuffEnemy LevelEnemy;
     public SaveInfo InfoToSave;
      public Text Meter,Fruit,SBFruit,SbMeter ;
     public GameObject Pl,UIControl,SaveManage,Shop;
@@ -23,6 +23,7 @@ public class Coin : MonoBehaviour
 
       void Start()
     {
+      
       shopContents=Shop.GetComponent<ShopContents>();
         saveNLoad=SaveManage.GetComponent<SaveNLoad>();
         player=Pl.GetComponent<Player>();
@@ -42,9 +43,9 @@ public class Coin : MonoBehaviour
         }
         if(Meterr>=NextChange)
         {
-          
+          LevelEnemy.Level++;
           changeMap=true;
-          NextChange+=500;
+          NextChange+=1000;
         }
          
     }

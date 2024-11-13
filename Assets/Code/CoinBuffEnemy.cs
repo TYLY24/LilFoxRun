@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public class CoinBuffEnemy : MonoBehaviour
 {
     public int Level=5;
+    public bool SafeZone=false;
     bool SpawnTime=false;
     GroundSpawner groundSpawner;
     [SerializeField]GameObject obtacle,Coin,Enemy,Eagel;
@@ -22,7 +23,7 @@ public class CoinBuffEnemy : MonoBehaviour
 
      [SerializeField] Vector2 ObtacSize;
 
-        List<int> MonsterOption = new List<int> {1, 2, 3},
+        List<int> MonsterOption = new List<int> {1, 2, 3, 4},
                 RandomSpawn=new List<int> {1, 2};//if EMPTY = MAX AMOUNT OF MOB
 
     private void Start()
@@ -67,7 +68,7 @@ public class CoinBuffEnemy : MonoBehaviour
     void Spawn()
     {
         SpawnCoin(groundSpawner.StartingPos);
-
+        if(!SafeZone)
         for(int i=1; i<=Level;i++)
         {   
             if(RandomSpawn.Count>0)
@@ -93,8 +94,8 @@ public class CoinBuffEnemy : MonoBehaviour
                         SpawnEnemy(groundSpawner.StartingPos,random);
                         MonsterOption.Remove(random);
                     }
-                        
                         break;
+                    
                 }
             }
                 
@@ -106,7 +107,8 @@ public class CoinBuffEnemy : MonoBehaviour
 
 
 
-
+    
+    
 
 
     void SpawnCoin(Vector2 pos)
@@ -179,11 +181,15 @@ public class CoinBuffEnemy : MonoBehaviour
                 Instantiate(Enemy,Place,quaternion.identity);
             
             } 
-        else
+        else if(random==4)
             {
                
                 posi.x=pos.x+ObtacSize.x*(groundSpawner.random2-1);
                 Instantiate(Enemy,posi,quaternion.identity);
+            }
+        else 
+            {
+                Instantiate(Eagel,Eagel.transform.position,quaternion.identity);
             }
         
         

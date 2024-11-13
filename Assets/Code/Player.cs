@@ -104,19 +104,14 @@ public class Player : MonoBehaviour
         }
          
 
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if(Input.GetKeyDown(KeyCode.UpArrow)&&PLAYED)
         {
             
             Jumpinginput();
 
         }
 
-        if(Input.GetKeyDown(KeyCode.DownArrow) )
-        {
-
-            rb.gravityScale=DownArrow;
-
-        }
+        
 
        
         

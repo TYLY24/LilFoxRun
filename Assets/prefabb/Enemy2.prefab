@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5113891583247301972}
   - component: {fileID: 5793322562200434792}
   - component: {fileID: 3491017703906724881}
+  - component: {fileID: 8436722540668572760}
+  - component: {fileID: 62745791885437908}
   m_Layer: 8
   m_Name: Enemy2
   m_TagString: Enemy
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 883864397556978901}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13, y: 3, z: -0.16686109}
+  m_LocalPosition: {x: 13, y: 2, z: -0.16686109}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -127,7 +129,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   AtakP: {x: 0, y: 0}
   Speed: 3
-  DiveSpeed: 8
+  DiveSpeed: 20
 --- !u!61 &3491017703906724881
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -173,3 +175,42 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 2.5625}
   m_EdgeRadius: 0
+--- !u!50 &8436722540668572760
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883864397556978901}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 8
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 2
+--- !u!114 &62745791885437908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883864397556978901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e57de2e77204747bb128d47f10f64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

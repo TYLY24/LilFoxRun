@@ -44,7 +44,7 @@ public class EnemySmash : MonoBehaviour
         player.Jumping();
         player.MaxJump++;
         //Destroy(Square.transform.parent.gameObject);
-        Square.transform.parent.gameObject.GetComponent<Enemy>().Bonked=true;
+        Square.transform.parent.gameObject.GetComponent<BonkNDed>().BonkBonk();
         
     }
     if(SuperGodMode==false)

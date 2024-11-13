@@ -26,14 +26,17 @@ public class GroundSpawner : MonoBehaviour
       [SerializeField] int MAP=1,PLACE=1,Limbo=0;
      [SerializeField]   HPnMETTER hPnMETTER;
      [SerializeField] BackGrControl backGrControl;
-   
+     CoinBuffEnemy coinBuffEnemy;
+   [SerializeField] AudioManager audioManager;
    float totalTime,totorandom;
 
 
     
 
-    
-    
+void Awake()
+{
+    coinBuffEnemy=GetComponent<CoinBuffEnemy>();
+}
     
 void OnTriggerEnter2D(Collider2D square)
     {
@@ -43,6 +46,10 @@ void OnTriggerEnter2D(Collider2D square)
         {
             Limbo=0;
             MAP=PLACE;
+            
+                //audioManager.PlayBgm(audioManager.PLACE);
+            coinBuffEnemy.SafeZone=false;
+            
         }
     }
     void OnTriggerExit2D(Collider2D square)
@@ -56,9 +63,35 @@ void OnTriggerEnter2D(Collider2D square)
         }
         if (square.CompareTag("Limbo"))
         {
+            if(Limbo==0)
+            {
+                audioManager.StopBgm();
+                audioManager.PlayBgm(audioManager.BgmCave);
+            }
+            
             Limbo++;
+            
         }
-
+        if (square.CompareTag("LimboEnd"))
+        {
+            audioManager.StopBgm();
+            if(PLACE==2)
+            {
+                audioManager.PlayBgm(audioManager.second);
+            }
+            else if(PLACE==3)
+            {
+                 audioManager.PlayBgm(audioManager.third);
+            }
+            else if(PLACE==4)
+            {
+                audioManager.PlayBgm(audioManager.four);
+            }
+            else 
+            {
+                audioManager.PlayBgm(audioManager.BgmRun);
+            }
+        }
 
         gameObject.GetComponent<Renderer>().material.color = Color.blue;
     }
@@ -90,7 +123,7 @@ void OnTriggerEnter2D(Collider2D square)
             {
                 MAP=0;
                 LimboActive=true;
-                if(PLACE>GStart.Length) 
+                if(PLACE>=GStart.Length) 
                 PLACE=1;
                 else
                 PLACE++;
@@ -104,13 +137,14 @@ void OnTriggerEnter2D(Collider2D square)
             groundCounter=true;
 
             generateGround();
-            if(totalTime*0.8f>=totorandom)
+            if(totalTime*0.5f>=totorandom)
             Groundwillfall(newObject);
              
              //Limbogenerate();
 
              if(LimboActive)
              {
+                coinBuffEnemy.SafeZone=true;
                 Limbogenerate();
                 LimboActive=false;
              }
@@ -170,7 +204,7 @@ void OnTriggerEnter2D(Collider2D square)
         
         totorandom = Random.Range(0, totalTime);
 
-        float x = (player.velocity.x * totorandom)*2;
+        float x = (player.velocity.x * totorandom)*2* 0.7f;
         float y = ((Jumpvel * totorandom + 0.5f * gravity * totorandom * totorandom)*2)* 0.7f;
 
        // test=totalTime;
@@ -285,7 +319,7 @@ void OnTriggerEnter2D(Collider2D square)
 
 
            int HaveBuff= Random.Range(1,100);
-           if(HaveBuff<=100)
+           if(HaveBuff<=30)
            {
             //randombuff go pru72
             int randomBuff =Random.Range(1,100);

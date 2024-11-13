@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float PeekapooSpeed=20f,goSpeed,Flip=1;
     [SerializeField] bool JumP=false,onscreen=false,Movement=false;
     
-    public bool Bonked=false,Move=false;
+    public bool Move=false;
     public GameObject Enemyplace;
     public Camera mainCamera;
      [SerializeField] Animator animati;
@@ -126,16 +126,13 @@ public class Enemy : MonoBehaviour
     {
       int State=0;
 
-      if(!Bonked)
-      {
+      
         if(!Movement)
         State=1;
         else
         State=0;
         
-      }
-      else
-      State=2;
+      
       
       animati.SetInteger("State", State);
     }

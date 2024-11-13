@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6317912454518470976}
   - component: {fileID: 3909113174865053110}
   - component: {fileID: 2121187375384663202}
+  - component: {fileID: 5478808704310418172}
   m_Layer: 8
   m_Name: Enemys
   m_TagString: Enemy
@@ -276,7 +277,6 @@ MonoBehaviour:
   JumP: 0
   onscreen: 0
   Movement: 0
-  Bonked: 0
   Move: 0
   Enemyplace: {fileID: 0}
   mainCamera: {fileID: 0}
@@ -302,3 +302,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5478808704310418172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7661864015577133117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e57de2e77204747bb128d47f10f64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
