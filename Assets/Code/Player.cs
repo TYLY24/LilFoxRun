@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     bonk bonk;
     Coin coin;
     SpriteRenderer sprite;
+    [SerializeField]EnemySmash enemySmash;
 
 
    void OnCollisionEnter2D(Collision2D collision)
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+    
       Application.targetFrameRate=60;
       coin =Coins.GetComponent<Coin>();
       sprite =GetComponent<SpriteRenderer>();
@@ -70,6 +72,18 @@ public class Player : MonoBehaviour
     }
 
 
+    void OnairAttack()
+    {
+      bonk.triggerAttack();
+    }
+    // void End()
+    // {
+    //   bonk.da();
+    // }
+    void EndAttack()
+    {
+      enemySmash.GodMode=false;
+    }
 
 
     void Update()

@@ -69,6 +69,7 @@ public class Boss : MonoBehaviour
         {
            StartCoroutine(Snap());
            tCoro++;
+           
         }
 
 
@@ -105,6 +106,7 @@ public class Boss : MonoBehaviour
        
          anim.SetBool("Atak",true);
         shakingCam.isShakaShaka=true;
+        
          Vector2 pos=transform.position;
         
     //    // while(pos.x<AtakPos)

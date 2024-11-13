@@ -1449,6 +1449,7 @@ MonoBehaviour:
   JUMPBIte: 0
   Ran: 5
   ii: 1
+  enemySmash: {fileID: 1594481578}
 --- !u!114 &203218956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3940,7 +3941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &574064762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6021,7 +6022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &788003427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9472,7 +9473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1129566604
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11204,7 +11205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1323268814
 RectTransform:
   m_ObjectHideFlags: 0

@@ -125,7 +125,7 @@ public class bonk : MonoBehaviour
 
     void DamageTime()
     {
-        Attack=false;
+        //Attack=false;
         enemySmash.GodMode=false;
     }
     void OnDrawGizmos()
